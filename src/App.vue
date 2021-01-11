@@ -1,23 +1,28 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div id="app" >
+    <div class="container">
+      <GlobalHeader></GlobalHeader>
+      <router-view/>
+    </div>
+    <div class="center">
+    <GlobalFooter>
+        <template slot="copyright"></template>
+    </GlobalFooter>
+    </div>
   </div>
 </template>
-
 <script>
+import GlobalFooter from '@/components/GlobalFooter'
+import GlobalHeader from '@/components/GlobalHeader'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    GlobalHeader,
+    GlobalFooter
+  }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less" scoped>
+@import "./main.less";
 </style>
