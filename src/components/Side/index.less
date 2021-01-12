@@ -1,0 +1,68 @@
+@import "~ant-design-vue/lib/style/themes/default.less";
+
+@ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+.logo {
+    height: 80px;
+    position: absolute;
+    line-height: 50px;
+    padding-left: (@menu-collapsed-width - 64px) / 2;
+    transition: all 0.3s;
+    background: #002140;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    img {
+        display: inline-block;
+        vertical-align: middle;
+        height: 32px;
+    }
+    h1 {
+        color: white;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 20px;
+        margin: 0 0 0 12px;
+        font-family: "Myriad Pro", "Helvetica Neue", Arial, Helvetica,
+            sans-serif;
+        font-weight: 600;
+    }
+}
+
+.sider {
+    .sider-margin{
+        margin-top: 100px
+    };
+    box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+    position: static;
+    z-index: 10;
+    overflow: hidden;
+    max-height: 100vh;
+    &.ligth {
+        background-color: white;
+        .logo {
+            background: white;
+            h1 {
+                color: #002140;
+            }
+        }
+    }
+}
+
+.title {
+    font-size: 30px;
+    color: #ffffff;
+    font-family: "Myriad Pro", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    position: relative;
+    top: 8px;
+}
+
+.icon {
+    width: 14px;
+    margin-right: 10px;
+}
+
+.menu{
+    height: 50vh;
+}

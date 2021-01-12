@@ -1,28 +1,38 @@
 <template>
-  <div id="app" >
-    <div class="container">
+  <div id="app">
+      <!-- 
       <GlobalHeader></GlobalHeader>
-      <router-view/>
-    </div>
-    <div class="center">
-    <GlobalFooter>
-        <template slot="copyright"></template>
-    </GlobalFooter>
-    </div>
+      <div class="container">
+      <Side></Side>
+        <router-view class="content"/>
+      <GlobalFooter class="center"></GlobalFooter> 
+      </div>
+      -->
+      <LocaleProvider :locale="locale">
+          <router-view />
+      </LocaleProvider>
   </div>
 </template>
 <script>
-import GlobalFooter from '@/components/GlobalFooter'
-import GlobalHeader from '@/components/GlobalHeader'
+// import GlobalFooter from '@/components/GlobalFooter'
+// import GlobalHeader from '@/components/GlobalHeader'
+// import Side from '@/components/Side'
+
+import { LocaleProvider } from "ant-design-vue";
+
 export default {
   name: 'App',
   components: {
-    GlobalHeader,
-    GlobalFooter
+    LocaleProvider
+    // GlobalHeader,
+    // GlobalFooter,
+    // Side,
+  },
+  data() {
+    return {
+    }
   }
 }
 </script>
 
-<style lang="less" scoped>
-@import "./main.less";
-</style>
+

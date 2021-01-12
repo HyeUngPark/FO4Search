@@ -1,13 +1,14 @@
 <template>
-  <div class="header">
+  <div class="content">
     <router-link to="/">
+     <h1>Index</h1>
     </router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'GlobalHeader',
+  name: 'Index',
   data () {
     return {
       title: 'FO4 Search'
@@ -18,18 +19,4 @@ export default {
 
 <style lang="less" scoped>
 @import './index.less';
-</style>
-<style lang="less">
-.ant-layout {
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-.menu {
-  .anticon {
-    margin-right: 8px;
-  }
-  .ant-dropdown-menu-item {
-    width: 160px;
-  }
-}
 </style>
