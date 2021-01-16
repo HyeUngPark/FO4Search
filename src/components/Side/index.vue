@@ -5,11 +5,11 @@
       breakpoint='lg'
       width='256'
       class='sider'
-    >
-    <a href='/' class="logo">
+    > 
+    <router-link to="/" class="logo">
       <img src='../../assets/logo.png'>
       <span class="title">{{title}}</span>
-    </a>
+    </router-link>
     <a-layout id='components-layout-demo-side'
               class='ant-layout-has-sider sider-margin'
               >
@@ -19,9 +19,13 @@
             선수조회
           </a-menu-item>
           <a-sub-menu key="user">
-            <span slot="title"><a-icon type="meh" :style="{ fontSize: '25px'}" /> 유저조회</span>
+            <span slot="title">
+              <a-icon type="meh" :style="{ fontSize: '25px'}" /> 유저조회
+            </span>
             <a-menu-item key="3">
+            <router-link to='/user/rank'>
               <a-icon type='trophy' :style="{ fontSize: '25px'}" />최고티어조회
+            </router-link>
             </a-menu-item>
             <a-menu-item key="4">
               <a-icon type='table' :style="{ fontSize: '25px'}"/>최근전적조회

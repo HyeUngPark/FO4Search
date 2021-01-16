@@ -22,7 +22,7 @@ import GlobalFooter from '@/components/GlobalFooter'
 import GlobalHeader from '@/components/GlobalHeader'
 import Side from '@/components/Side'
 export default {
-  name: "BasicLayout",
+  name: "IndexLayout",
   components: {
     GlobalHeader,
     GlobalFooter,
