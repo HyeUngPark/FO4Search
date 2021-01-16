@@ -2,50 +2,61 @@
   <LayoutSider
       :trigger="null"
       collapsible
-      breakpoint="lg"
-      width="256"
-      class="sider"
+      breakpoint='lg'
+      width='256'
+      class='sider'
     >
-    <div class="logo">
-      <img src="../../assets/logo.png">
+    <a href='/' class="logo">
+      <img src='../../assets/logo.png'>
       <span class="title">{{title}}</span>
-    </div>
-    <a-layout id="components-layout-demo-side" 
-              class="ant-layout-has-sider sider-margin"
+    </a>
+    <a-layout id='components-layout-demo-side'
+              class='ant-layout-has-sider sider-margin'
               >
-        <a-menu theme="dark" :default-selected-keys="['1']" mode="inline">
+        <a-menu theme='dark' mode='inline'>
           <a-menu-item key="1">
-            <a-icon type="pie-chart" />
-            <span>Option 1</span>
+            <a-icon type="user" :style="{ fontSize: '25px'}"/>
+            선수조회
           </a-menu-item>
-          <a-menu-item key="2">
-            <a-icon type="desktop" />
-            <span>Option 2</span>
-          </a-menu-item>
-          <a-sub-menu key="sub1">
-            <span slot="title"><a-icon type="user" /><span>User</span></span>
+          <a-sub-menu key="user">
+            <span slot="title"><a-icon type="meh" :style="{ fontSize: '25px'}" /> 유저조회</span>
             <a-menu-item key="3">
-              Tom
+              <a-icon type='trophy' :style="{ fontSize: '25px'}" />최고티어조회
             </a-menu-item>
             <a-menu-item key="4">
-              Bill
+              <a-icon type='table' :style="{ fontSize: '25px'}"/>최근전적조회
             </a-menu-item>
             <a-menu-item key="5">
-              Alex
+              <a-icon type='shopping-cart' :style="{ fontSize: '25px'}" />거래내역조회
             </a-menu-item>
           </a-sub-menu>
-          <a-sub-menu key="sub2">
-            <span slot="title"><a-icon type="team" /><span>Team</span></span>
-            <a-menu-item key="6">
-              Team 1
-            </a-menu-item>
-            <a-menu-item key="8">
-              Team 2
-            </a-menu-item>
-          </a-sub-menu>
-          <a-menu-item key="9">
-            <a-icon type="file" />
-            <span>File</span>
+          <a-menu-item key="calc">
+            <a-icon type="calculator" :style="{ fontSize: '25px'}"/> 수수료계산기
+          </a-menu-item>
+          <a-menu-item key="sqd">
+
+            <svg version="1.0"
+                 width='1em' 
+                 height='1em' 
+                 viewBox="64 64 2200 2200"
+                 fill="currentColor"
+                 class='anticon anticon-calculator'
+                 :style="{ fontSize: '25px'}"
+            >
+            <path d="M270 1125 l0 -1125 850 0 850 0 0 1125 0 1125 -850 0 -850 0 0 -1125z
+            m1070 870 l0 -75 -220 0 -220 0 0 75 0 75 220 0 220 0 0 -75z m-610 -80 l0
+            -145 395 0 395 0 0 145 0 145 130 0 130 0 0 -420 0 -420 -135 0 c-120 0 -136
+            2 -141 18 -35 104 -123 204 -221 250 -51 24 -70 27 -153 27 -132 -1 -192 -26
+            -281 -114 -48 -48 -71 -81 -86 -121 l-21 -55 -136 -3 -136 -3 0 421 0 420 130
+            0 130 0 0 -145z m455 -586 c25 -7 57 -28 85 -58 l45 -46 -184 -3 c-101 -1
+            -186 0 -189 3 -11 11 75 86 114 100 48 17 77 18 129 4z m-422 -359 c28 -77
+            130 -178 212 -210 84 -34 215 -34 298 -1 99 39 195 144 231 254 5 15 21 17
+            141 17 l135 0 0 -420 0 -420 -130 0 -130 0 0 155 0 155 -395 0 -395 0 0 -155
+            0 -155 -130 0 -130 0 0 420 0 421 136 -3 136 -3 21 -55z m538 41 c-28 -51
+            -115 -101 -176 -101 -61 0 -148 50 -176 101 -9 18 -2 19 176 19 178 0 185 -1
+            176 -19z m39 -746 l0 -75 -220 0 -220 0 0 75 0 75 220 0 220 0 0 -75z"/>
+            </svg>
+            스쿼드메이커
           </a-menu-item>
         </a-menu>
     </a-layout>
@@ -59,7 +70,7 @@ import { urlToList } from "../_utils/pathTools"
 export default {
   name: "Side",
   components: {
-    LayoutSider: Layout.Sider
+    LayoutSider: Layout.Sider,
   },
   props: {
     logo: {
@@ -78,95 +89,15 @@ export default {
       type: Object
     }
   },
-  mounted() {
-    const pathArr = urlToList(this.location.path);
-    if (pathArr[2] && !this.checkPath(pathArr[2])) {
-      this.openKeys = [pathArr[0]];
-      this.selectedKeys = [pathArr[1]];
-      return;
-    } else if (pathArr[2]) {
-      this.openKeys = [pathArr[0], pathArr[1]];
-    } else {
-      this.openKeys = [pathArr[0]];
-    }
-    this.selectedKeys = [this.location.path];
-  },
-  watch: {
-    collapsed: "collapsedChange",
-    $route() {
-      const pathArr = urlToList(this.location.path);
-      if (pathArr[2] && !this.checkPath(pathArr[2])) {
-        this.openKeys = [pathArr[0]];
-        this.selectedKeys = [pathArr[1]];
-        return;
-      } else if (pathArr[2]) {
-        this.openKeys = [pathArr[0], pathArr[1]];
-      } else {
-        this.openKeys = [pathArr[0]];
-      }
-      this.selectedKeys = [this.location.path];
-    }
-  },
   data() {
     return {
       title : 'FO4 SEARCH',
       openKeys: [],
       selectedKeys: [],
-      status: false
-    };
-  },
-  methods: {
-    checkPath(url) {
-      let status = false;
-      const mapData = data => {
-        data.map(item => {
-          if (item.path == url) status = true;
-          if (item.children) {
-            haveChildren(item.children); // eslint-disable-line
-          }
-        });
-      };
-      const haveChildren = arr => {
-        mapData(arr);
-      };
-      mapData(this.menuData);
-      return status;
-    },
-    handleOpenChange(openKeys) {
-      let keys;
-      if (openKeys.length > 1) {
-        if (openKeys.length > 2) {
-          keys = [openKeys[openKeys.length - 1]];
-        } else if (openKeys[1].indexOf(openKeys[0]) > -1) {
-          keys = [openKeys[0], openKeys[1]];
-        } else {
-          keys = [openKeys[openKeys.length - 1]];
-        }
-        this.openKeys = keys;
-      } else {
-        this.openKeys = openKeys;
-      }
-    },
-    // eslint-disable-next-line
-    selected({ item, key, selectedKeys }) {
-      this.selectedKeys = selectedKeys;
-    },
-    // eslint-disable-next-line
-    collapsedChange(val, oldVal) {
-      // eslint-disable-line
-      if (val) {
-        this.openKeys = [];
-      } else {
-        const pathArr = urlToList(this.location.path);
-        if (pathArr[2]) {
-          this.openKeys = [pathArr[0], pathArr[1]];
-        } else {
-          this.openKeys = [pathArr[0]];
-        }
-      }
+      status: false,
     }
-  }
-};
+  },
+}
 </script>
 
 <style lang="less" scoped>
@@ -177,8 +108,14 @@ export default {
 .drawer .drawer-content {
   background: #001529;
 }
+.ant-menu-item{
+  font-size: @font-size-base+4.5 !important;
+}
+.ant-menu-submenu-title{
+  font-size: @font-size-base+4.5 !important;
+}
 .ant-menu-inline-collapsed {
-  & > .ant-menu-item .sider-menu-item-img + span,
+  & > .ant-menu-item .sider-menu-item-img + span
   &
     > .ant-menu-item-group
     > .ant-menu-item-group-list
