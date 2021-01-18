@@ -10,6 +10,7 @@ var port = process.env.PORT || 5000;
 router module
 */
 var commonRouter = require('./route/commonRouter');
+var userRouter = require('./route/userRouter');
 var serveStatic = require('serve-static');
 
 var bodyParser = require('body-parser');
@@ -24,6 +25,7 @@ app.use(bodyParser.json({
 
 app.use(serveStatic(path.join(__dirname, '/dist')));
 
+app.use('/user', userRouter);
 app.use('/', commonRouter);
 
 var server = http.listen(port, function() {
