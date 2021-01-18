@@ -6,10 +6,10 @@
       width='256'
       class='sider'
     > 
-    <router-link to="/" class="logo">
+    <a href="/" class="logo">
       <img src='../../assets/logo.png'>
       <span class="title">{{title}}</span>
-    </router-link>
+    </a>
     <a-layout id='components-layout-demo-side'
               class='ant-layout-has-sider sider-margin'
               >
@@ -69,7 +69,6 @@
 
 <script>
 import { Layout } from 'ant-design-vue'
-import { urlToList } from "../_utils/pathTools"
 
 export default {
   name: "Side",
