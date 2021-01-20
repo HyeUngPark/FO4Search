@@ -79,14 +79,18 @@ router.get('/rank', function(req, res) {
                                     // console.log('★★★ 일반 등급 조회 성공 ★★★\n',result);
                                     console.log('★★★ 일반 등급 조회 성공 ★★★\n');
                                     var temp;
-                                    vs1 ? temp=result.find((item, idx)=>{
-                                        return item.divisionId === vs1.division
-                                    }) : ''
-                                    temp ? vs1.divisionName = temp.divisionName : '';
-                                    vsD ? temp=result.find((item, idx)=>{
-                                        return item.divisionId === vsD.division
-                                    }) : ''
-                                    temp ? vsD.divisionName = temp.divisionName : '';
+                                    if(vs1){
+                                        temp=result.find((item, idx)=>{
+                                            return item.divisionId === vs1.division
+                                        })
+                                        temp? vs1.divisionName = temp.divisionName :''
+                                    } 
+                                    if(vsD){
+                                        temp=result.find((item, idx)=>{
+                                            return item.divisionId === vsD.division
+                                        })
+                                        temp? vsD.divisionName = temp.divisionName :''
+                                    }
                                     if(vsV){
                                         // 4. 볼타 등급 조회
                                         options.uri = ` https://static.api.nexon.co.kr/fifaonline4/latest/division_volta.json`
