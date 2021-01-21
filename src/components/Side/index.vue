@@ -23,12 +23,14 @@
               <a-icon type="meh" :style="{ fontSize: '25px'}" /> 유저조회
             </span>
             <a-menu-item key="3">
-            <router-link to='/user/rank'>
-              <a-icon type='trophy' :style="{ fontSize: '25px'}" />최고티어조회
-            </router-link>
+              <router-link to='/user/rank'>
+                <a-icon type='trophy' :style="{ fontSize: '25px'}" />최고티어조회
+              </router-link>
             </a-menu-item>
             <a-menu-item key="4">
-              <a-icon type='table' :style="{ fontSize: '25px'}"/>최근전적조회
+              <router-link to='/user/match'>
+                <a-icon type='table' :style="{ fontSize: '25px'}"/>최근전적조회
+              </router-link>
             </a-menu-item>
             <a-menu-item key="5">
               <a-icon type='shopping-cart' :style="{ fontSize: '25px'}" />거래내역조회

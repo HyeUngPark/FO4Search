@@ -18,6 +18,11 @@ export default new Router({
           path : '/user/rank',
           component : () => import('@/routes/User/UserRank')
         },
+        {
+          name : 'userRank',
+          path : '/user/match',
+          component : () => import('@/routes/User/UserMatch')
+        },
       ]
     },
     {

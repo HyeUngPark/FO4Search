@@ -1,0 +1,52 @@
+@import "~ant-design-vue/lib/style/themes/default.less";
+
+
+.content {
+    flex: auto;
+
+    .desc {
+        color: @text-color-secondary;
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 16px;
+    }
+
+    .actions {
+        button:not(:last-child) {
+            margin-right: 8px;
+        }
+    }
+}
+.f-input{
+    width: 10px; 
+    margin-right: 2%;
+}
+
+@media only screen and (max-width: @screen-md) {
+    .content {
+        .ant-divider-vertical {
+            vertical-align: unset;
+        }
+        .name {
+            display: none;
+        }
+        i.trigger {
+            padding: 0 12px;
+        }
+        .logo {
+            padding-right: 12px;
+            position: relative;
+        }
+        .right {
+            position: absolute;
+            right: 12px;
+            top: 0;
+            background: #fff;
+            .account {
+                .avatar {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
