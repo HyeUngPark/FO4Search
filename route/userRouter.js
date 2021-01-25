@@ -94,8 +94,10 @@ router.get('/rank', function(req, res) {
                         
                         returnData.rank =[vs1,vsD,vsV];
                         returnData.reCd ='01';
-                        res.json(returnData);
-                        console.log(returnData);
+                    }).then(()=>{
+                        setTimeout(()=>{
+                            res.json(returnData);
+                        },3000);
                     });
                 }else{ // 볼타 등급만 없는경우
                     returnData.rank =[vs1,vsD,vsV];
@@ -115,14 +117,13 @@ router.get('/rank', function(req, res) {
                 
                 returnData.rank =[vs1,vsD,vsV];
                 returnData.reCd ='01';
-                console.log(returnData);
+                res.json(returnData);
             });
         }else{ // 등급이 없는경우
             console.log('등급 기록이 없습니다.','\n');
         }
         });
     });
-    res.json(returnData);
 });
 
 router.get('/match', function(req, res) {
