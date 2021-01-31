@@ -1,5 +1,5 @@
 export function checkConsonant (text) {
-    var pattern = /([^a-zA-Z가-힣\x20])/i
+    var pattern = /([^0-9a-zA-Z가-힣\x20])/i
     return pattern.test(text)
 }
 
