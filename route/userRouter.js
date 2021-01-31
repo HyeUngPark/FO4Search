@@ -29,7 +29,9 @@ router.get('/rank', function(req, res) {
     // 유저 accessId 조회
     accessIdSearch(params.nickName, 'nick').then(resolveData=>{
         // 유저 아이디가 없는경우
-        if(resolveData.reCd && resolveData.reCd ==='04') res.json(resolveData)
+        if(resolveData.reCd && resolveData.reCd ==='04'){
+            res.json(resolveData);
+        }else{
 
         returnData.level = resolveData.result.level;
         returnData.nickName = resolveData.result.nickname;
@@ -121,8 +123,11 @@ router.get('/rank', function(req, res) {
             });
         }else{ // 등급이 없는경우
             console.log('등급 기록이 없습니다.','\n');
+            res.json({reCd:'04'});
         }
+   
         });
+        }
     });
 });
 
@@ -134,8 +139,9 @@ router.get('/match', function(req, res) {
     // 1. 유저 닉네임으로 식별자 조회
     accessIdSearch(params.nickName, 'nick').then(resolveData=>{
         // 유저 아이디가 없는경우
-        if(resolveData.reCd && resolveData.reCd ==='04') res.json(resolveData)
-        //2. 유저식별자로 최근매치 조회
+        if(resolveData.reCd && resolveData.reCd ==='04'){
+            res.json(resolveData);
+        }else{        //2. 유저식별자로 최근매치 조회
         options.uri = `https://api.nexon.co.kr/fifaonline4/v1.0/users/${resolveData.result.accessId}/matches`
         options.qs = {
             matchtype : '50'
@@ -201,6 +207,7 @@ router.get('/match', function(req, res) {
                 res.json(returnData);
             },12000);
         });
+        }
     });
 });
     const apiSend = ((options) =>{
