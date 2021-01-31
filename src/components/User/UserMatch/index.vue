@@ -66,9 +66,9 @@
 </template>
 
 <script>
-import {apiSend}  from "../../_utils/api"
 import {checkConsonant, checkSpecial, checkSpace}  from "../../_utils/validation"
 import moment from 'moment'
+import { mapGetters } from 'vuex'
 const columns = [
   {
     title : '대전상대',
@@ -151,6 +151,31 @@ export default {
       matchList : []
     }  
   },
+    computed: {
+    ...mapGetters(['getData'])
+  },
+  watch: {
+    getData(newValue, oldValue) {
+      if(newValue && newValue.reCd==='04'){
+        alert('일치하는 닉네임이 없습니다.');
+        this.data = [];
+      }else if(newValue && newValue.reCd ==='01'){
+        if(newValue.nickName !== oldValue.nickName){
+          this.data = [];
+        }
+        this.matchList = newValue.matchList;
+        for (var matchInfo of this.matchList){
+          let temp = matchInfo.matchDefaultInfo;
+          if(temp.matchEndType===1){
+            temp.matchResult = '몰수승';
+          }else if(temp.matchEndType === 2){
+            temp.matchResult = '몰수패';
+          }
+          this.data.push(temp);
+        }
+      }
+    },
+  },
   methods: {
     async handleSearch () {
       if(this.nickName !==''){
@@ -171,22 +196,14 @@ export default {
           return
         }   
 
-        var result = await apiSend('get','/user/match',params)
-        if(result.reCd ==='04'){
-          alert('일치하는 닉네임이 없습니다.');
-          // 초기화
-        }else if(result.reCd ==='01'){
-          this.matchList = result.matchList;
-          for (var matchInfo of this.matchList){
-            let temp = matchInfo.matchDefaultInfo;
-            if(temp.matchEndType===1){
-              temp.matchResult = '몰수승';
-            }else if(temp.matchEndType === 2){
-              temp.matchResult = '몰수패';
-            }
-            this.data.push(temp);
-          }
+        let payload ={
+          method : 'get'
+          ,params : params
+          ,uri : '/user/match'
         }
+
+        this.$store.dispatch('FETCH_DATA', payload);
+
       }else{
         alert('닉네임을 입력해주세요!')
       }
