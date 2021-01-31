@@ -30,6 +30,7 @@ router.get('/rank', function(req, res) {
     accessIdSearch(params.nickName, 'nick').then(resolveData=>{
         // 유저 아이디가 없는경우
         if(resolveData.reCd && resolveData.reCd ==='04'){
+            resolveData.nickName = params.nickName;
             res.json(resolveData);
         }else{
 
@@ -96,6 +97,7 @@ router.get('/rank', function(req, res) {
                         
                         returnData.rank =[vs1,vsD,vsV];
                         returnData.reCd ='01';
+                        returnData.nickName = params.nickName;
                     }).then(()=>{
                         setTimeout(()=>{
                             res.json(returnData);
@@ -104,6 +106,7 @@ router.get('/rank', function(req, res) {
                 }else{ // 볼타 등급만 없는경우
                     returnData.rank =[vs1,vsD,vsV];
                     returnData.reCd ='01';
+                    returnData.nickName = params.nickName;
                     res.json(returnData);
                 }         
             });
@@ -119,6 +122,7 @@ router.get('/rank', function(req, res) {
                 
                 returnData.rank =[vs1,vsD,vsV];
                 returnData.reCd ='01';
+                returnData.nickName = params.nickName;
                 res.json(returnData);
             });
         }else{ // 등급이 없는경우
