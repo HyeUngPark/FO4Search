@@ -35,10 +35,10 @@
               />
               <a key='opponent' slot="opponent" slot-scope="opponent">{{ opponent }}</a>
               <span slot="opponentController" slot-scope="opponentController" v-if="opponentController ==='keyboard'">
-                <a-icon type="calculator" :style="{ fontSize: '25px'}"/> 키보드
+                <img src='../../../assets/keyboard.png'>
               </span>
               <span slot="opponentController" v-else>
-                <a-icon type="calculator" :style="{ fontSize: '25px'}"/> 패드
+                <img src='../../../assets/pad.png'>
               </span>
               <span 
                     id = "matchScore"
@@ -135,6 +135,19 @@ const data = [
 // ,matchScore: "4:3"
 // ,maxTear: "http://s.nx.com/s2/game/fo4/obt/rank/large/update_2009/ico_rank5.png"
 // ,opponent: "testtest"
+// ,opponentAid: "5bb865586022b271772e060d"
+// ,opponentController: "etc"
+// },
+// {
+//   bp: "32,085,019,620 BP "
+// ,changeNickname: "asdasdadk"
+// ,haCd: "h"
+// ,matchDate: "2021-01-22T15:15:23"
+// ,matchEndType: 0
+// ,matchResult: "패"
+// ,matchScore: "1:3"
+// ,maxTear: "http://s.nx.com/s2/game/fo4/obt/rank/large/update_2009/ico_rank3.png"
+// ,opponent: "asdasdadk"
 // ,opponentAid: "5bb865586022b271772e060d"
 // ,opponentController: "keyboard"
 // },
@@ -238,10 +251,6 @@ export default {
 .ant-form{
   padding-top: 1em;
   line-height: 2.5 !important;
-}
-#matchResult{
-  padding-left: 0px;
-  margin-left: 0px;
 }
 #matchScore{
   padding-right: 0px;
