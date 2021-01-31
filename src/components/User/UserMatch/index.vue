@@ -216,6 +216,7 @@ export default {
         }
 
         this.$store.dispatch('FETCH_DATA', payload);
+        this.$store.state.LoadingStatus = true;
 
       }else{
         alert('닉네임을 입력해주세요!')

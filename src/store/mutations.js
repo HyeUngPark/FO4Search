@@ -1,6 +1,12 @@
 export default {
     FETCH_DATA(state, data) {
-        console.log("mutatuons's data ",data);
         state.data = data;
+        state.LoadingStatus = false;
     },
+    startSpinner(state){
+        state.LoadingStatus = true;
+    },
+    endSpinner(state){
+        state.LoadingStatus = false;
+    }
 };

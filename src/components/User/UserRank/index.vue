@@ -25,7 +25,7 @@
           </a-form-item> 
         </a-form>
         <br/>
-        <div class="search-result-list" v-if="this.$store.state && this.$store.state.data && this.$store.state.data.reCd=='01'">
+        <div class="search-result-list" v-if="this.$store.state.data && this.$store.state.data.reCd=='01' && this.$store.state.data.rank">
           <a-list>
             <a-list-item>
               <a-card title='공식경기'>
@@ -120,6 +120,8 @@ export default {
         }
 
         this.$store.dispatch('FETCH_DATA', payload);
+        this.$store.state.LoadingStatus = true;
+
       }else{
         alert('닉네임을 입력해주세요!')
       }
