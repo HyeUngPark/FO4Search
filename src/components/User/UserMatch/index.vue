@@ -4,7 +4,7 @@
       :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px'}"
     >
       <a-page-header
-        title="최근 매치 조회"
+        title="최근 전적 조회(일반게임)"
         class="title"
         />
         <a-form layout="inline" style="margin-left:20px">
@@ -23,6 +23,7 @@
               조회
             </a-button>
           </a-form-item> 
+          <a-radio-group :options="radioOptions" v-model="mode" @change="modeChange" />
         </a-form>
         <br/>
           <a-table :columns="columns" :data-source="data" class="tb-font">
@@ -123,7 +124,13 @@ const columns = [
     width : 130,
   },
 ];
-
+const radioOptions = [
+  { label: '공식경기1vs1', value: '50' },
+  { label: '클래식1vs1', value: '40' },
+  { label: '친선경기', value: '60' },
+  { label: '감독모드', value: '52' },
+  // { label: '볼타모드', value: '214' },
+];
 const data = [
 // {
 //   bp: "32,085,019,620 BP "
@@ -161,6 +168,8 @@ export default {
       moment : moment,
       columns,
       data,
+      radioOptions,
+      mode : '50',
       matchList : []
     }  
   },
@@ -174,6 +183,10 @@ export default {
         this.data = [];
       }else if(newValue && newValue.reCd ==='01'){
         if(newValue.nickName !== oldValue.nickName){
+          // 다른 닉네임을 검색했을 경우
+          this.data = [];
+        }else if(newValue.mode !== oldValue.mode){
+          // 다른 모드를 선택했을경우
           this.data = [];
         }
         this.matchList = newValue.matchList;
@@ -194,6 +207,7 @@ export default {
       if(this.nickName !==''){
         var params ={
           nickName : this.nickName
+          ,mode : this.mode
         }
         // validation
         if(checkSpecial(this.nickName)){
@@ -222,6 +236,10 @@ export default {
         alert('닉네임을 입력해주세요!')
       }
     },
+    modeChange (e)  {
+      this.mode = e.target.value;
+      console.log(this.mode);
+    }
   }
 }
 </script> 

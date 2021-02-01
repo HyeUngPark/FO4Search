@@ -138,7 +138,7 @@ router.get('/rank', function(req, res) {
 router.get('/match', function(req, res) {
     var params = req.query;
     console.log("/user/match \n",params);
-
+    console.log(params.mode);
     var matchList=[];
     // 1. 유저 닉네임으로 식별자 조회
     accessIdSearch(params.nickName, 'nick').then(resolveData=>{
@@ -148,7 +148,7 @@ router.get('/match', function(req, res) {
         }else{        //2. 유저식별자로 최근매치 조회
         options.uri = `https://api.nexon.co.kr/fifaonline4/v1.0/users/${resolveData.result.accessId}/matches`
         options.qs = {
-            matchtype : '50'
+            matchtype : params.mode
             ,offset : 0 // 시작위치
             ,limit : 10 // 제한
         };
@@ -205,8 +205,9 @@ router.get('/match', function(req, res) {
             }
             setTimeout(()=>{
                 let returnData = {
-                    matchList : matchList
-                    ,reCd : '01'
+                    matchList : matchList,
+                    mode : params.mode,
+                    reCd : '01'
                 }
                 res.json(returnData);
             },12000);
