@@ -4,7 +4,7 @@
       :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px'}"
     >
       <a-page-header
-        title="최근 전적 조회(일반게임)"
+        title="최근 전적 조회(일반)"
         class="title"
         />
         <a-form layout="inline" style="margin-left:20px">
