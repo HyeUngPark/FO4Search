@@ -20,9 +20,14 @@ const router = new Router({
           component : () => import('@/routes/User/UserRank')
         },
         {
-          name : 'userRank',
+          name : 'userMatch',
           path : '/user/match',
           component : () => import('@/routes/User/UserMatch')
+        },
+        {
+          name : 'userRank',
+          path : '/user/vtMatch',
+          component : () => import('@/routes/User/UserVtMatch')
         },
       ]
     },

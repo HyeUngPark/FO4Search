@@ -6,7 +6,7 @@
 <script>
 import UserMatch from "@/components/User/userMatch"
 export default {
-  name: "userRank",
+  name: "userMatch",
   components: {
     UserMatch
   }

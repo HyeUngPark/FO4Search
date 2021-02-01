@@ -13,7 +13,11 @@
     <a-layout id='components-layout-demo-side'
               class='ant-layout-has-sider sider-margin'
               >
-        <a-menu theme='dark' mode='inline'>
+        <a-menu 
+          theme='dark' 
+          mode='inline'
+          :default-open-keys="['user']"
+        >
           <a-menu-item key="1">
             <a-icon type="user" :style="{ fontSize: '25px'}"/>
             선수조회
@@ -29,10 +33,15 @@
             </a-menu-item>
             <a-menu-item key="4">
               <router-link to='/user/match'>
-                <a-icon type='table' :style="{ fontSize: '25px'}"/>최근전적조회
+                <a-icon type='table' :style="{ fontSize: '25px'}"/>전적조회(일반)
               </router-link>
             </a-menu-item>
             <a-menu-item key="5">
+              <router-link to='/user/vtMatch'>
+                <a-icon type='table' :style="{ fontSize: '25px'}"/>전적조회(볼타)
+              </router-link>
+            </a-menu-item>
+            <a-menu-item key="6">
               <a-icon type='shopping-cart' :style="{ fontSize: '25px'}" />거래내역조회
             </a-menu-item>
           </a-sub-menu>
