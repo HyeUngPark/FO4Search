@@ -29,7 +29,7 @@
           <a-list>
             <a-list-item>
               <a-card title='공식경기'>
-                <span v-if="this.$store.state.data.rank[0].division!=null">
+                <span v-if="this.$store.state.data.rank[0] && this.$store.state.data.rank[0].division!=null">
                   <span><img :src="getRankImage('sc',this.$store.state.data.rank[0].division)" style="width:40px; height:40px"/></span><br/>
                   {{this.$store.state.data.rank[0].divisionName}}<br/>
                   등급 달성일 : {{moment(this.$store.state.data.rank[0].achievementDate).format('YYYY-MM-DD')}}
@@ -40,7 +40,7 @@
                 </span>
               </a-card>
               <a-card title='감독모드'>
-                <span v-if="this.$store.state.data.rank[1].division!=null">
+                <span v-if="this.$store.state.data.rank[1] && this.$store.state.data.rank[1].division!=null">
                   <span><img :src="getRankImage('sc',this.$store.state.data.rank[1].division)" style="width:40px; height:40px"/></span><br/>
                   {{this.$store.state.data.rank[1].divisionName}}<br/>
                   등급 달성일 : {{moment(this.$store.state.data.rank[1].achievementDate).format('YYYY-MM-DD')}}
@@ -51,9 +51,9 @@
                 </span>
               </a-card>
               <a-card title='볼타모드'>
-                                <span v-if="this.$store.state.data.rank[2].division!=null">
+                                <span v-if="this.$store.state.data.rank[2] && this.$store.state.data.rank[2].division!=null">
                   <span><img :src="getRankImage('vt',this.$store.state.data.rank[2].division)" style="width:40px; height:40px"/></span><br/>
-                  {{this.$store.state.data.rank[0].divisionName}}<br/>
+                  {{this.$store.state.data.rank[2].divisionName}}<br/>
                   등급 달성일 : {{moment(this.$store.state.data.rank[2].achievementDate).format('YYYY-MM-DD')}}
                 </span>
                 <span v-else>
